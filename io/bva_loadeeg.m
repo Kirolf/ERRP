@@ -92,7 +92,7 @@ totalBytes =  ftell(fp);
 nFrames =  totalBytes / (bytesPerSample * nChans);
 
 %pre-allocate memory
-eeg = single( zeros(nChans,nFrames) );
+eeg = single( zeros(nChans,round(nFrames)) ); %if the measurement broke up nFrames is not an integer -->round command
 
 % Read data
 switch lower(meta.DataOrientation)
